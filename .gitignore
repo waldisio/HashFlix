@@ -1,0 +1,5 @@
+.hashtag
+*.sqlite3
+__pycache__
+*.pyc
+.idea
