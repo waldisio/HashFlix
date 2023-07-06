@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/e6432de644.js" crossorigin="anonymous"></script>
+
     {% block head %}
     {% endblock %}
 </head>
@@ -17,5 +18,28 @@
 
     {% block content %}
     {% endblock %}
+
+    <script>
+        const nav = document.querySelector('nav')
+
+        document.addEventListener("scroll",e=>
+        {
+
+            if(scrollY>100){
+                if(scrollY>window.innerHeight){
+                nav.classList.add('invisible')
+            }else{
+                nav.classList.add('bg-gray-900')
+                nav.classList.remove('invisible')
+            }
+            }else{
+                nav.classList.remove('bg-gray-900')
+                nav.classList.remove('invisible')
+            }
+        }
+
+        )
+	</script>
+
 </body>
 </html>
