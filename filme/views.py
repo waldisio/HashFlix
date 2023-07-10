@@ -20,7 +20,10 @@ class Detalhesfilme(DetailView):
         filme = self.get_object()
         filme.visualizacoes += 1
         filme.save()
-        return super(Detalhesfilme, self).get(request, *args, **kwargs)
+        usuario = request.user
+        usuario.filmes_vistos.add(filme)
+        # return super(Detalhesfilme, self).get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(Detalhesfilme, self).get_context_data(**kwargs)
