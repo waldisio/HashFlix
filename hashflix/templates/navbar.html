@@ -13,6 +13,7 @@
     	    </a>
         </div>
 
+        {% if user.is_authenticated %}
         <div class="w-6/12 flex flex-nowrap justify-end">
             <div class="mr-2">
                 <form method="GET" action="{% url 'filme:pesquisafilme' %}">
@@ -22,9 +23,15 @@
             </div>
 
             <div class="mr-2">
+                {% if user.is_authenticated %}
                 <a href="#">
                     <button class="bg-red-600 text-white py-1 px-3 rounded-md">login</button>
                 </a>
+                {% else %}
+                <a href="#">
+                    <button class="bg-red-600 text-white py-1 px-3 rounded-md">login</button>
+                </a>
+                {% endif %}
             </div>
 
             <div class="mr-2">
@@ -33,6 +40,7 @@
                 </a>
             </div>
         </div>
+        {% endif %}
 
     </nav>
 </body>
