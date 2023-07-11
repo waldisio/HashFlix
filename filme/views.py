@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from .models import Filme
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
+from .forms import CriarContaForm
 
 
 class Homepage(TemplateView):
@@ -60,8 +61,18 @@ class Paginaperfil(LoginRequiredMixin, TemplateView):
     template_name = 'editarperfil.html'
 
 
-class Criarconta(TemplateView):
+class Criarconta(FormView):
     template_name = 'criarconta.html'
+    form_class = CriarContaForm
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('filme:login')
+
+
 
 
 """ Subsitituído por uma classe genérica, já que apenas retorna um template
