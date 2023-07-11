@@ -56,6 +56,9 @@ class Pesquisafilme(LoginRequiredMixin, ListView):
             return None
 
 
+class Paginaperfil(LoginRequiredMixin, TemplateView):
+    template_name = 'editarperfil.html'
+
 
 """ Subsitituído por uma classe genérica, já que apenas retorna um template
 def homepage(request):
