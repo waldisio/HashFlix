@@ -60,6 +60,10 @@ class Paginaperfil(LoginRequiredMixin, TemplateView):
     template_name = 'editarperfil.html'
 
 
+class Criarconta(TemplateView):
+    template_name = 'criarconta.html'
+
+
 """ Subsitituído por uma classe genérica, já que apenas retorna um template
 def homepage(request):
     return render(request, 'homepage.html')"""
