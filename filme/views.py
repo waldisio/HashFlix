@@ -1,9 +1,10 @@
-from django.shortcuts import render, reverse
-from .models import Filme, Usuario
-from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
+from django.shortcuts import reverse
+from django.views.generic import ListView, DetailView, FormView, UpdateView
+
 from .forms import CriarContaForm, FormHomepage
+from .models import Filme, Usuario
 
 
 class Homepage(FormView):
@@ -23,7 +24,6 @@ class Homepage(FormView):
             return reverse('filme:login')
         else:
             return reverse('filme:criarconta')
-
 
 
 class Homefilmes(LoginRequiredMixin, ListView):
@@ -86,8 +86,6 @@ class Criarconta(FormView):
 
     def get_success_url(self):
         return reverse('filme:login')
-
-
 
 
 """ Subsitituído por uma classe genérica, já que apenas retorna um template
